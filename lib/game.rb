@@ -11,6 +11,9 @@ class Game
 
   def attack
     @current_victim.receive_damage
+  end
+
+  def switch_turns
     @current_player = other_player
     @current_victim = other_player
   end

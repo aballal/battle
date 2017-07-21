@@ -25,6 +25,11 @@ class Battle < Sinatra::Base
     erb(:attack)
   end
 
+  post '/switch_turns' do
+    $game.switch_turns
+    redirect '/play'
+  end
+
   post '/names' do
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
