@@ -11,6 +11,7 @@ feature 'Attacking' do
   end
 
   scenario 'reduce player 2 HP by 10' do
+    click_button('OK')
     expect(page).to have_content 'Superman: 50 HP'
   end
 
