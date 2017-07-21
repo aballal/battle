@@ -18,6 +18,10 @@ class Game
     @current_victim = other_player
   end
 
+  def game_over?
+    @current_victim.hit_points == 0
+  end
+
   private
 
   def other_player

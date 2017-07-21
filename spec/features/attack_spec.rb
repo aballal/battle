@@ -31,4 +31,14 @@ feature 'Attacking' do
     end
   end
 
+  context 'Game Over' do
+    scenario 'triggers game over when player 2 HP reach 0' do
+      10.times do
+        click_button 'OK'
+        click_button 'Attack'
+      end
+      expect(page).to have_content 'Game Over Superman!!!'
+    end
+  end
+
 end

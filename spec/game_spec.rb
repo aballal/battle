@@ -34,7 +34,6 @@ describe Game do
   end
 
   describe '#switch_turns' do
-
     it 'changes the current player' do
       game.switch_turns
       expect(game.current_player).to eq player_2
@@ -44,6 +43,15 @@ describe Game do
       game.switch_turns
       expect(game.current_victim).to eq player_1
     end
-
   end
+
+  describe '#game_over' do
+    it 'says the game is over when player reaches 0 HP' do
+      allow(player_2).to receive(:receive_damage)
+      game.attack
+      allow(player_2).to receive(:hit_points) {0}
+      expect(game).to be_game_over
+    end
+  end
+
 end
