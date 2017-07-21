@@ -14,13 +14,35 @@ describe Game do
       it 'initialises player 1' do
         expect(game.player_2).to eq player_2
       end
+
+      it 'has current player as player 1' do
+        expect(game.current_player).to eq player_1
+      end
+
+      it 'has current victim as player 2' do
+        expect(game.current_victim).to eq player_2
+      end
+
     end
   end
 
   describe '#attack' do
     it 'damages the player' do
-      expect(player_2).to receive(:receive_damage)
-      game.attack(player_2)
+      allow(player_2).to receive(:receive_damage)
+      game.attack
     end
+
+    it 'changes the player after attack' do
+      allow(player_2).to receive(:receive_damage)
+      game.attack
+      expect(game.current_player).to eq player_2
+    end
+
+    it 'chanes the victim after attack' do
+      allow(player_2).to receive(:receive_damage)
+      game.attack
+      expect(game.current_victim).to eq player_1
+    end
+
   end
 end
